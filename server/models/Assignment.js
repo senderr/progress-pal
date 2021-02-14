@@ -4,7 +4,6 @@ const AssignmentSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   dueDate: {
     type: Date,
@@ -14,6 +13,16 @@ const AssignmentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course',
   },
+  users: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        unique: true,
+      },
+      progress: Number,
+    },
+  ],
 });
 
 AssignmentSchema.pre('remove', async function (next) {

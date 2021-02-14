@@ -9,12 +9,14 @@ const CourseSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
+      unique: true,
     },
   ],
   assignments: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Assignment',
+      unique: true,
     },
   ],
   owner: {
