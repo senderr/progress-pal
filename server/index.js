@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const port = 5000;
 
@@ -26,6 +27,11 @@ dotenv.config();
 // Let server parse json requests
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 // Server static files
 app.use(express.static(path.join(__dirname, 'client', 'src')));
 

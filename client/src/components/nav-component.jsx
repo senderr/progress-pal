@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import './nav-styles.scss';
 
+import { Link } from 'react-router-dom';
+
 const { Header, Content, Footer } = Layout;
 
 export const Nav = () => (
@@ -17,7 +19,7 @@ export const Nav = () => (
           defaultSelectedKeys={['1']}
         >
           <Menu.Item className="title" key="1">
-            Progress Pal
+            <Link to="/">Progress Pal</Link>
           </Menu.Item>
         </Menu>
       </Header>

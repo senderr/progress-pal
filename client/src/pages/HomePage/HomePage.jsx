@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CardList from '../component/card-list';
-import SearchCourse from '../component/search-course';
-import AddCourse from '../component/add-course';
+import CardList from './card-list';
+import SearchCourse from './search-course';
+import AddCourse from './add-course';
 
 const HomePage = () => (
   <div>

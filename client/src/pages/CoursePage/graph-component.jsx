@@ -11,7 +11,7 @@ class Graph extends Component {
         <Container>
           <Row>
             <Col>
-              <Divider orientation="left">Friend's Name Here</Divider>
+              <Divider orientation="left">Friend Name Goes Here</Divider>
             </Col>
           </Row>
           <Row>

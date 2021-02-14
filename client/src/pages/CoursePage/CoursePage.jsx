@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import { Layout, Menu } from 'antd';
 import { AppstoreOutlined } from '@ant-design/icons';
-import { MenuItem } from '../component/menu-item-component';
-import GraphList from '../component/graphs-component';
+import { MenuItem } from './menu-item-component';
+import GraphList from './graphs-component';
 
-import './course-styles.scss';
+import './CoursePage.scss';
 
 const { Header, Content, Footer, Sider } = Layout;
 

@@ -11,7 +11,7 @@ export const AddCourse = () => {
 
   return (
     <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
-      <Form.List name="users">
+      <Form.List name="courses">
         {(fields, { add, remove }) => (
           <>
             {fields.map((field) => (
@@ -23,8 +23,8 @@ export const AddCourse = () => {
                 <Form.Item
                   {...field}
                   className="courseInfo"
-                  name={[field.name, 'first']}
-                  fieldKey={[field.fieldKey, 'first']}
+                  name={[field.name, 'course']}
+                  fieldKey={[field.fieldKey, 'course']}
                   rules={[{ required: true, message: 'Missing course name' }]}
                 >
                   <Input placeholder="Course Name" />

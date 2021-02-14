@@ -1,0 +1,41 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-bottom: 50px;
+
+  .title {
+    margin: 10px 0;
+  }
+}
+
+.register-page {
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  margin: 30px auto;
+}
+
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-bottom: 50px;
+
+  .title {
+    margin: 10px 0;
+  }
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-bottom: 50px;
+
+  .title {
+    margin: 10px 0;
+  }
+}

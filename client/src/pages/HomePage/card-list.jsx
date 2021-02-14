@@ -8,6 +8,7 @@ import { CourseCard } from './coursecard';
 
 import './card-list-styles.scss';
 
+const url = 'https://localhost:3000';
 class CardList extends Component {
   render() {
     const cards = [];
@@ -15,7 +16,7 @@ class CardList extends Component {
     for (var i = 0; i < 8; i++) {
       cards.push(
         <Col span={5}>
-          <CourseCard id={i} name={'COURSE NAME'} />
+          <CourseCard key={i} id={i} name={'COURSE NAME'} />
         </Col>
       );
     }
