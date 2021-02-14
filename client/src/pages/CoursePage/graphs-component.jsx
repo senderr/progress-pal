@@ -10,11 +10,7 @@ const GraphList = () => {
     graphs.push(<Graph />);
   }
 
-  // return <div className="graphs">
-  //   {graphs.map(() => {
-
-  //   })}
-  //   </div>;
+  return <div className="graphs">{graphs}</div>;
 };
 
 export default GraphList;

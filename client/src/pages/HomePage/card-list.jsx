@@ -9,29 +9,23 @@ import { CourseCard } from './coursecard';
 import './card-list-styles.scss';
 
 const url = 'https://localhost:3000';
-class CardList extends Component {
-  render() {
-    const cards = [];
-
-    for (var i = 0; i < 8; i++) {
-      cards.push(
-        <Col span={5}>
-          <CourseCard key={i} id={i} name={'COURSE NAME'} />
-        </Col>
-      );
-    }
-
-    return (
-      <div className="card-list">
-        <div className="site-card-wrapper">
-          <Row gutter={[12, 12]} justify="center" align="middle">
-            {cards}
-          </Row>
-        </div>
+export const CardList = ({ courses }) => {
+  return (
+    <div className="card-list">
+      <div className="site-card-wrapper">
+        <Row gutter={[12, 12]} justify="center" align="middle">
+          <div>
+            {courses.map(({ _id, name }) => (
+              <Col span={5}>
+                <CourseCard key={_id} id={_id} name={name} />
+              </Col>
+            ))}
+          </div>
+        </Row>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default CardList;
 

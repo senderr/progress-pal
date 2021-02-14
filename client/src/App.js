@@ -12,9 +12,6 @@ axios.defaults.baseURL = 'http://localhost:5000/api';
 axios.defaults.headers = {
   'Content-Type': 'application/json',
 };
-if (localStorage.progressPalToken) {
-  axios.defaults.headers.common['x-auth-token'] = localStorage.progressPalToken;
-}
 
 const App = () => {
   const [auth, setAuth] = useState(0);
@@ -22,6 +19,9 @@ const App = () => {
 
   useEffect(() => {
     if (!user) {
+      if (localStorage.progressPalToken) {
+        axios.defaults.headers['x-auth-token'] = localStorage.progressPalToken;
+      }
       axios
         .get('/auth')
         .then((res) => {
@@ -42,8 +42,8 @@ const App = () => {
             user ? <HomePage /> : <AuthPage updateAuth={setAuth} />
           }
         />
-        <Route path="/c" component={CoursePage} />
-        <Route path="/home" component={HomePage} />
+        <Route path="/c" render={() => <CoursePage user={user} />} />
+        <Route path="/home" render={() => <HomePage user={user} />} />
 
         {/*  */}
       </Switch>

@@ -14,7 +14,6 @@ const LoginPage = ({ updateAuth }) => {
     signupEmail,
     signinPassword,
     signupPassword,
-    signinConfirmPassword,
     signupConfirmPassword,
     name,
   } = form;
@@ -23,36 +22,38 @@ const LoginPage = ({ updateAuth }) => {
     const { value, name } = event.target;
 
     setForm({
+      ...form,
       [name]: value,
     });
   }
 
-  const signin = async () => {
+  const signin = async (e) => {
     try {
+      e.preventDefault();
+      console.log(form);
       const res = await axios.post('/auth/signIn', {
-        signinEmail,
-        signinPassword,
+        email: signinEmail,
+        password: signinPassword,
       });
-
-      console.log(signinPassword);
-
-      localStorage.setItem('progressPalToken', res.data);
-      updateAuth(1);
+      console.log(res.data);
+      localStorage.setItem('progressPalToken', res.data.token);
+      updateAuth(Math.random());
     } catch (error) {
       console.log(error);
     }
   };
 
-  const signup = async () => {
+  const signup = async (e) => {
     try {
+      e.preventDefault();
       const res = await axios.post('/auth/signUp', {
         name,
-        signupEmail,
-        signupPassword,
+        email: signupEmail,
+        password: signupPassword,
       });
 
-      localStorage.setItem('progressPalToken', res.data);
-      updateAuth(1);
+      localStorage.setItem('progressPalToken', res.data.token);
+      updateAuth(Math.random());
     } catch (error) {
       console.log(error);
     }
@@ -107,9 +108,9 @@ const LoginPage = ({ updateAuth }) => {
           />
           <FormInputCustom
             type="password"
-            name="password"
+            name="signinPassword"
             value={signinPassword}
-            handleChange={signinConfirmPassword}
+            handleChange={handleChange}
             required
             label="Password"
           />

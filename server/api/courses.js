@@ -12,6 +12,27 @@ router.get('/', auth, async (req, res) => {
 });
 
 /**
+ * Get all courses that begin with string
+ */
+router.get('/:pre', auth, async (req, res) => {
+  console.log(req.params.pre);
+  // var pre = req.params.pre;
+  const courses = await Course.find({ name: /.*req.params.pre.*/ }).populate([
+    {
+      path: 'users',
+    },
+    {
+      path: 'assignments',
+    },
+    {
+      path: 'owner',
+    },
+  ]);
+
+  res.status(200).json(courses);
+});
+
+/**
  * Get a course with a specified ID
  */
 router.get('/:id', auth, async (req, res) => {
