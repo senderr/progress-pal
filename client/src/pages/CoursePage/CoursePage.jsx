@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { Layout, Menu } from 'antd';
-import { AppstoreOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, PlusOutlined } from '@ant-design/icons';
 import { MenuItem } from './menu-item-component';
 import GraphList from './graphs-component';
 
@@ -53,6 +53,7 @@ const CoursePage = ({ user }) => {
                 {assignment.name}
               </Menu.Item>
             ))}
+            <Menu.Item icon={<PlusOutlined />}>Add Assignment</Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>

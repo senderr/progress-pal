@@ -78,11 +78,9 @@ export default function UserSlider() {
       <div className={classes.margin} />
       <Row justify="center">
         <Col span={20}>
-          <Typography gutterBottom>
-            <b>
-              <em>My Progress</em>
-            </b>
-          </Typography>
+          <div className="friendname">
+            <Typography gutterBottom>My Progress</Typography>
+          </div>
           <PrettoSlider
             valueLabelDisplay="auto"
             aria-label="pretto slider"
