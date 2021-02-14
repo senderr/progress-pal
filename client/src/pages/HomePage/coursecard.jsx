@@ -7,6 +7,7 @@ const { Meta } = Card;
 
 export const CourseCard = ({ id, name }) => (
   <Card
+    key={id}
     className="card-container"
     hoverable
     style={{ width: 240 }}

@@ -15,7 +15,7 @@ export const CardList = ({ courses }) => {
       <div className="site-card-wrapper">
         <Row gutter={[12, 12]} justify="center" align="middle">
           {courses.map(({ _id, name }) => (
-            <Col span={5}>
+            <Col key={_id} span={5}>
               <CourseCard key={_id} id={_id} name={name} />
             </Col>
           ))}
