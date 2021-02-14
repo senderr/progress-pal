@@ -14,10 +14,9 @@ router.get('/', auth, async (req, res) => {
 /**
  * Get all courses that begin with string
  */
-router.get('/:pre', auth, async (req, res) => {
-  // console.log(req.params.pre);
-  // var pre = req.params.pre;
-  const courses = await Course.find({ name: { $regex: /^req.params.pre/ } });
+router.get('/search/:pre', auth, async (req, res) => {
+  const re = new RegExp(req.params.pre, 'i');
+  const courses = await Course.find({ name: { $regex: re } });
 
   res.status(200).json(courses);
 });
@@ -62,10 +61,15 @@ router.post('/', auth, async (req, res) => {
 });
 
 router.patch('/join/:id', auth, async (req, res) => {
-  const course = await Course.findById(req.params.id);
+  const course = await Course.findById(req.params.id).populate('assignments');
 
   course.users.push(req.user.id);
   await course.save();
+
+  course.assignments.forEach(async (assignment) => {
+    assignment.users.push({ _id: req.user.id, progress: 0 });
+    await assignment.save();
+  });
 
   res.status(200).send();
 });

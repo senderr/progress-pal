@@ -29,6 +29,9 @@ router.post('/', auth, async (req, res) => {
   if (!_course) return res.status(400).send('Invalid Course');
 
   _course.assignments.push(newAssignment);
+  _course.users.forEach((user) => {
+    newAssignment.users.push({ _id: user._id, progress: 0 });
+  });
   _course.save();
 
   const assignment = await newAssignment.save();
@@ -52,7 +55,12 @@ router.delete('/:id', auth, async (req, res) => {
 /**
  * Add progress to an assignment
  */
-// router.patch('/:progress', auth, async(req, res)=>{
-//   const
-// })
+router.patch('/progress/:id/:progress', auth, async (req, res) => {
+  const response = await Assignment.updateOne(
+    { _id: req.params.id, 'users._id': req.user.id },
+    { $set: { 'users.$.progress': req.params.progress } }
+  );
+
+  res.status(200).json(response);
+});
 module.exports = router;
