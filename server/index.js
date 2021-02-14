@@ -23,17 +23,17 @@ dotenv.config();
   }
 })();
 
-
 // Let server parse json requests
 app.use(express.json());
 
 // Server static files
 app.use(express.static(path.join(__dirname, 'client', 'src')));
 
+app.use('/api/auth', require('./api/auth'));
 app.use('/api/courses', require('./api/courses'));
 app.use('/api/assignments', require('./api/assignments'));
 app.use('/api/users', require('./api/users'));
 
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server listening at https://localhost:${port}`);
 });

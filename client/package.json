@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.3",
     "antd": "^4.12.3",
     "bootstrap": "^4.6.0",
+    "firebase": "^8.2.7",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
