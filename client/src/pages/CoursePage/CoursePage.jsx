@@ -14,7 +14,12 @@ const { Header, Content, Footer, Sider } = Layout;
 const CoursePage = ({ user }) => {
   const [course, setCourse] = useState({ assignments: [] });
   const [assignment, setAssignment] = useState({ users: [] });
+  const [name, setName] = useState();
   const params = useParams();
+
+  const onChange = (e) => {
+    setName(e.target.value);
+  };
 
   const getCourse = async () => {
     const res = await axios.get(`/courses/${params.id}`);
@@ -53,7 +58,9 @@ const CoursePage = ({ user }) => {
                 {assignment.name}
               </Menu.Item>
             ))}
-            <Menu.Item icon={<PlusOutlined />}>Add Assignment</Menu.Item>
+            <Menu.Item icon={<PlusOutlined />}>
+              <input value={name} onChange={onChange} />
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
