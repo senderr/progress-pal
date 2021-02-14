@@ -13,11 +13,17 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const CoursePage = ({ user }) => {
   const [course, setCourse] = useState({ assignments: [] });
+  const [assignment, setAssignment] = useState({ users: [] });
   const params = useParams();
 
   const getCourse = async () => {
     const res = await axios.get(`/courses/${params.id}`);
     setCourse(res.data);
+  };
+
+  const getAssignment = async (id) => {
+    const res = await axios.get(`/assignments/${id}`);
+    setAssignment(res.data);
   };
 
   useEffect(() => {
@@ -38,8 +44,12 @@ const CoursePage = ({ user }) => {
         >
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']}>
-            {course.assignments.forEach((assignment) => (
-              <Menu.Item key={assignment._id} icon={<AppstoreOutlined />}>
+            {course.assignments.map((assignment) => (
+              <Menu.Item
+                key={assignment._id}
+                icon={<AppstoreOutlined />}
+                onClick={() => getAssignment(assignment._id)}
+              >
                 {assignment.name}
               </Menu.Item>
             ))}
@@ -62,7 +72,7 @@ const CoursePage = ({ user }) => {
               className="site-layout-background"
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <GraphList />
+              <GraphList user={user} users={assignment.users} />
             </div>
           </Content>
         </Layout>

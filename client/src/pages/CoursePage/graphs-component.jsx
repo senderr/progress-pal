@@ -3,16 +3,22 @@ import UserSlider from './user-slider';
 
 import Graph from './graph-component';
 
-const GraphList = () => {
+const GraphList = ({ user, users }) => {
   const graphs = [];
+  //graphs.push();
 
-  graphs.push(<UserSlider key={0} />);
-
-  for (var i = 1; i < 8; i++) {
-    graphs.push(<Graph key={i} />);
-  }
-
-  return <div className="graphs">{graphs}</div>;
+  return (
+    <div className="graphs">
+      {user ? <UserSlider key={user._id} /> : null}
+      {users.map((user) => (
+        <Graph
+          name={user._id.name}
+          key={user._id._id}
+          progress={user.progress}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default GraphList;

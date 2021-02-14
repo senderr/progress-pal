@@ -4,25 +4,23 @@ import { Divider } from 'antd';
 
 import './graph-styles.scss';
 
-class Graph extends Component {
-  render() {
-    return (
-      <div className="graph">
-        <Container>
-          <Row>
-            <Col>
-              <Divider orientation="left">Friend Name Goes Here</Divider>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="progbarrow">
-              <ProgressBar className="progbar" variant="success" now={40} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
-}
+const Graph = ({ name, progress }) => {
+  return (
+    <div className="graph">
+      <Container>
+        <Row>
+          <Col>
+            <Divider orientation="left">{name}</Divider>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="progbarrow">
+            <ProgressBar className="progbar" variant="success" now={progress} />
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
 
 export default Graph;
