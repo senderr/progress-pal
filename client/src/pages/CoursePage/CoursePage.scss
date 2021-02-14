@@ -3,3 +3,14 @@
     background-color: #001529;
   }
 }
+
+.input {
+  max-width: 10em;
+  justify-content: center;
+  display: block;
+
+  Input {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

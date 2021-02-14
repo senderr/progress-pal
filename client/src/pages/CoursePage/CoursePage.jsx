@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Input, Row, Col } from 'antd';
 import { AppstoreOutlined, PlusOutlined } from '@ant-design/icons';
 import { MenuItem } from './menu-item-component';
 import GraphList from './graphs-component';
@@ -58,10 +58,16 @@ const CoursePage = ({ user }) => {
                 {assignment.name}
               </Menu.Item>
             ))}
-            <Menu.Item icon={<PlusOutlined />}>
-              <input value={name} onChange={onChange} />
-            </Menu.Item>
           </Menu>
+          <Row justify="center">
+            <Col span={19}>
+              <Input
+                size="medium"
+                placeholder="large size"
+                prefix={<PlusOutlined />}
+              />
+            </Col>
+          </Row>
         </Sider>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
           <Header
