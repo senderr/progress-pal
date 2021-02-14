@@ -54,7 +54,7 @@ export const AddCourse = ({ addCourse }) => {
                           id="input"
                           className="input"
                           type="text"
-                          placeholder="Enter first name"
+                          placeholder="Enter course name"
                           name={'course'}
                           value={state.course}
                           onChange={handleChange}

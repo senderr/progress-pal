@@ -79,9 +79,7 @@ export default function UserSlider() {
       <Row justify="center">
         <Col span={20}>
           <Typography gutterBottom>
-            <b>
-              <em>My Progress</em>
-            </b>
+            <div className="friendname">My Progress</div>
           </Typography>
           <PrettoSlider
             valueLabelDisplay="auto"
