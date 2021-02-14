@@ -17,7 +17,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/:pre', auth, async (req, res) => {
   // console.log(req.params.pre);
   // var pre = req.params.pre;
-  const courses = await Course.find({ name: /.*req.params.pre.*/ });
+  const courses = await Course.find({ name: { $regex: /^req.params.pre/ } });
 
   res.status(200).json(courses);
 });

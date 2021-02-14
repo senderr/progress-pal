@@ -3,7 +3,6 @@ const router = express.Router();
 const Assignment = require('../models/Assignment');
 const auth = require('../auth');
 
-
 /**
  * Get an assignment with a specified ID
  */
@@ -53,7 +52,7 @@ router.delete('/:id', auth, async (req, res) => {
 /**
  * Add progress to an assignment
  */
-router.patch('/:progress', auth, async(req, res)=>{
-  const 
-})
+// router.patch('/:progress', auth, async(req, res)=>{
+//   const
+// })
 module.exports = router;
