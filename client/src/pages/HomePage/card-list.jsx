@@ -14,13 +14,11 @@ export const CardList = ({ courses }) => {
     <div className="card-list">
       <div className="site-card-wrapper">
         <Row gutter={[12, 12]} justify="center" align="middle">
-          <div>
-            {courses.map(({ _id, name }) => (
-              <Col span={5}>
-                <CourseCard key={_id} id={_id} name={name} />
-              </Col>
-            ))}
-          </div>
+          {courses.map(({ _id, name }) => (
+            <Col span={5}>
+              <CourseCard key={_id} id={_id} name={name} />
+            </Col>
+          ))}
         </Row>
       </div>
     </div>
@@ -28,5 +26,3 @@ export const CardList = ({ courses }) => {
 };
 
 export default CardList;
-
-// class="col-md-4 col-sm-6 col-xs-12"

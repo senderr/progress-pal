@@ -13,7 +13,7 @@ export const CourseCard = ({ id, name }) => (
     cover={
       <img
         className="image"
-        src={`https://robohash.org/${id}?set=set4&size=180x180`}
+        src={`https://robohash.org/${id + 1}?set=set4&size=180x180`}
         alt="kittens"
       />
     }
