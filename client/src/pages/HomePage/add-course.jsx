@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Form, Input, Button, Space } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import './add-course-styles.scss';
 
@@ -23,7 +23,7 @@ export const AddCourse = ({ addCourse }) => {
   };
 
   return (
-    <div>
+    <div className="form">
       <Form
         name="dynamic_form_nest_item"
         onFinish={onFinish}
@@ -34,31 +34,38 @@ export const AddCourse = ({ addCourse }) => {
           {(fields, { add, remove }) => (
             <>
               {fields.map((field) => (
-                <div
+                <Row
+                  justify="center"
                   key={field.key}
                   style={{ display: 'flex', marginBottom: 8 }}
                 >
-                  <Form.Item
-                    {...field}
-                    className="courseInfo"
-                    name={[field.name, 'course']}
-                    fieldKey={[field.fieldKey, 'course']}
-                    rules={[{ required: true, message: 'Missing course name' }]}
-                  >
-                    <div className="border">
-                      <Input
-                        id="input"
-                        className="input"
-                        type="text"
-                        placeholder="Enter first name"
-                        name={'course'}
-                        value={state.course}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </Form.Item>
-                  <MinusCircleOutlined onClick={() => remove(field.name)} />
-                </div>
+                  <Col>
+                    <Form.Item
+                      {...field}
+                      className="courseInfo"
+                      name={[field.name, 'course']}
+                      fieldKey={[field.fieldKey, 'course']}
+                      rules={[
+                        { required: true, message: 'Missing course name' },
+                      ]}
+                    >
+                      <div className="border">
+                        <Input
+                          id="input"
+                          className="input"
+                          type="text"
+                          placeholder="Enter first name"
+                          name={'course'}
+                          value={state.course}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </Form.Item>
+                  </Col>
+                  <Col style={{ marginLeft: 8 }}>
+                    <MinusCircleOutlined onClick={() => remove(field.name)} />
+                  </Col>
+                </Row>
               ))}
               <Form.Item>
                 <Button
@@ -74,7 +81,7 @@ export const AddCourse = ({ addCourse }) => {
             </>
           )}
         </Form.List>
-        <Form.Item>
+        <Form.Item className="bottom">
           <Button type="primary" htmlType="submit" className="addButton">
             Submit
           </Button>
