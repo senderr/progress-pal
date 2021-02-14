@@ -58,6 +58,12 @@ const CoursePage = ({ user }) => {
                 {assignment.name}
               </Menu.Item>
             ))}
+            <Menu.Item
+              key={assignment._id}
+              onClick={() => getAssignment(assignment._id)}
+            >
+              Add an assignment
+            </Menu.Item>
           </Menu>
           <Row justify="center">
             <Col span={19}>
