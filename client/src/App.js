@@ -42,7 +42,7 @@ const App = () => {
             user ? <HomePage /> : <AuthPage updateAuth={setAuth} />
           }
         />
-        <Route path="/c" render={() => <CoursePage user={user} />} />
+        <Route path="/c/:id" render={() => <CoursePage user={user} />} />
         <Route path="/home" render={() => <HomePage user={user} />} />
 
         {/*  */}

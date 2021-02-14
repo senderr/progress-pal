@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { List, Avatar } from 'antd';
+import { Redirect } from 'react-router-dom';
 
-const SearchResults = ({ courseNames }) => {
-  return (
+const SearchResults = ({ courses }) => {
+  const [redirect, setRedirect] = useState();
+
+  const joinCourse = async (id) => {
+    const res = await axios.patch(`/courses/join/${id}`);
+    setRedirect(id);
+  };
+
+  return !redirect ? (
     <List
       itemLayout="horizontal"
-      dataSource={courseNames}
-      renderItem={(courseName) => (
+      dataSource={courses}
+      renderItem={(course) => (
         <List.Item>
           <List.Item.Meta
+            onClick={(e) => {
+              joinCourse(course._id);
+            }}
             avatar={<Avatar src="https://i.imgur.com/puicAT9h.jpg" />}
-            title={<a href="https://ant.design">{courseName.title}</a>}
-            description="Brussel sprouts cow, rabbits a gates a, storage shed fences. Bulls at rose garden cucumbers mice sunflower wheat in pig."
+            title={<p>{course.name}</p>}
           />
         </List.Item>
       )}
     />
+  ) : (
+    <Redirect to={`/c/${redirect}`} />
   );
 };
 
