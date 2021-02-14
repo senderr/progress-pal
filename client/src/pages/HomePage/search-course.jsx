@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 import { Search } from 'semantic-ui-react';
 import './search-course-styles.scss';
@@ -9,20 +10,12 @@ import SearchResults from './search-results';
 
 const SearchCourse = () => {
   // This should be populated with a GET request
-  const courseNames = [
-    {
-      title: 'Ant Design Title 1',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-    {
-      title: 'Ant Design Title 3',
-    },
-    {
-      title: 'Ant Design Title 4',
-    },
-  ];
+  const [courses, setCourses] = useState([]);
+
+  const onSearchChange = async (e) => {
+    const res = await axios.get(`/courses/search/${e.target.value}`);
+    setCourses(res.data);
+  };
 
   return (
     <div className="search">
@@ -31,14 +24,14 @@ const SearchCourse = () => {
           type="text"
           name="courseSearch"
           // value={}
-          // handleChange={}
+          handleChange={(e) => onSearchChange(e)}
           required
           label="Search and add a course to your homepage:"
         />
       </form>
 
       <div>
-        <SearchResults courseNames={courseNames} />
+        <SearchResults courses={courses} />
       </div>
     </div>
   );
