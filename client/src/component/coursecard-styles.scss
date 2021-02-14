@@ -14,10 +14,24 @@
     max-width: 35%;
     max-height: 35%;
   }
+
+  .ant-card-meta-title {
+    text-align: center;
+  }
+}
+
+.image {
+  width: 65px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .card-container:hover {
   transform: scale(1.05);
+}
+
+.title {
+  text-align: center;
 }
 
 /********** Desktop View only **********/

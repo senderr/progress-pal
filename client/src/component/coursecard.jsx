@@ -12,6 +12,7 @@ export const CourseCard = ({ id, name }) => (
     style={{ width: 240 }}
     cover={
       <img
+        className="image"
         src={`https://robohash.org/${id}?set=set4&size=180x180`}
         alt="kittens"
       />

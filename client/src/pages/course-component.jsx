@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { Layout, Menu } from 'antd';
 import { AppstoreOutlined } from '@ant-design/icons';
-
 import { MenuItem } from '../component/menu-item-component';
-import Graphs from '../component/graphs-component';
+import GraphList from '../component/graphs-component';
+
+import './course-styles.scss';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -34,7 +35,7 @@ class CoursePage extends Component {
               height: '100vh',
               position: 'fixed',
               left: 0,
-              paddingTop: 60,
+              paddingTop: 40,
             }}
           >
             <div className="logo" />
@@ -43,49 +44,23 @@ class CoursePage extends Component {
             </Menu>
           </Sider>
           <Layout className="site-layout" style={{ marginLeft: 200 }}>
-            <Header className="site-layout-background" style={{ padding: 0 }} />
+            <Header
+              className="site-layout-background"
+              style={{ padding: 0, height: '20px' }}
+            />
             <Content
               style={{
-                margin: '24px 16px 0',
+                margin: '24px 40px 0px 40px',
                 overflow: 'initial',
+                background: 'white',
+                padding: '8px 24px 16px 24px',
               }}
             >
               <div
                 className="site-layout-background"
                 style={{ padding: 24, textAlign: 'center' }}
               >
-                <Graphs />
-                ...
-                <br />
-                Really
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                long
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ...
-                <br />
-                ... content
+                <GraphList />
               </div>
             </Content>
           </Layout>
