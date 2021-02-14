@@ -50,4 +50,10 @@ router.delete('/:id', auth, async (req, res) => {
   res.status(200).send();
 });
 
+/**
+ * Add progress to an assignment
+ */
+router.patch('/:progress', auth, async(req, res)=>{
+  const 
+})
 module.exports = router;
