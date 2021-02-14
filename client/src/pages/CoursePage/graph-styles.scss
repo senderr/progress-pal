@@ -1,6 +1,5 @@
 .graph {
   margin-bottom: 3em;
-
   // .progbarrow {
   //   display: flex;
   //   align-items: center;
@@ -11,4 +10,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.ant-layout-content {
+  min-height: 675px;
 }
